@@ -1,0 +1,90 @@
+// ------------------------------------
+// BREAKPOINTS
+// ------------------------------------
+$grid-breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    xxl: 1400px
+);
+
+$grid-width: (
+    xs: 360px,
+    sm: 540px,
+    md: 720px,
+    lg: 960px,
+    xl: 1140px,
+    xxl: 1320px
+);
+
+
+// Breakpoint para ocultar elementos en pantallas chicas (menores a md = 768px)
+$hide-sm-max: 768px;
+
+
+// COLOR PALETTE
+
+$color-primary: #1E40AF;
+$color-primary-hover: #1D4ED8;
+$color-primary-light: #93C5FD;
+
+$color-secondary: #F97316;
+$color-secondary-hover: #EA580C;
+$color-secondary-light: #FED7AA;
+
+$color-tertiary: #FACC15;
+$color-tertiary-hover: #EAB308;
+$color-tertiary-light: #FEF9C3;
+
+$color-danger: #EF4444;
+$color-danger-hover: #DC2626;
+
+$color-success: #22C55E;
+
+$color-white: #FFFFFF; // Fondo general
+$color-gray-light: #F3F4F6; // Fondo alternativo, tarjetas
+$color-gray-medium: #D1D5DB;
+$color-gray-dark: #111827; // Texto principal, íconos oscuros
+
+$primary-color: $color-primary;
+$secondary-color: $color-secondary;
+$tertiary-color: $color-tertiary;
+$success-color: $color-success;
+$warning-color: $color-tertiary;
+$danger-color: $color-danger;
+
+
+// LAYOUT / GENERAL
+
+$body-bg-color: $color-white;
+$header-bg-color: $color-primary;
+$footer-bg-color: $color-primary;
+$grid-columns: 12;
+$grid-gap: 2rem;
+
+$card-min-width: 280px;
+
+
+// FUENTES
+
+$font-primary: "Inter", sans-serif;
+$font-secondary: "Nunito", sans-serif;
+$font-tertiary: "Rubik", sans-serif;
+$font-auxiliary: "Neucha", cursive;
+
+// SPACINGS
+
+$spacings: (
+    m: margin,
+    mt: margin-top,
+    mb: margin-bottom,
+    ml: margin-left,
+    mr: margin-right,
+    p: padding,
+    pt: padding-top,
+    pb: padding-bottom,
+    pl: padding-left,
+    pr: padding-right,
+);
