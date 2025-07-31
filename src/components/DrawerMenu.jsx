@@ -2,6 +2,7 @@ import { createPortal } from "react-dom";
 import Box from "./Box";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
+import Button from "./Button";
 
 function DrawerMenu({ show, closeMenu, children }) {
   return show
@@ -9,9 +10,9 @@ function DrawerMenu({ show, closeMenu, children }) {
         <Box className="drawer__overlay" role="button" onClick={closeMenu}>
           <Box className="drawer__content" onClick={(e) => e.stopPropagation()}>
             <Box className="d-flex justify-end">
-              <button className="drawer__close">
+              <Button className="drawer__close">
                 <FontAwesomeIcon icon={faClose} onClick={closeMenu} size="xl" />
-              </button>
+              </Button>
             </Box>
             {children}
           </Box>

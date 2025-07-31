@@ -1,0 +1,56 @@
+@use "sass:map";
+@use "../utils/variables" as *;
+
+.navbar {
+
+    // Por defecto visible en desktop
+    &__navigation {
+        list-style: none;
+        display: flex;
+        gap: 2rem;
+        margin: 0;
+        padding: 0;
+    }
+
+    &__link {
+        color: $color-white;
+        text-decoration: none;
+        font-family: $font-secondary;
+        font-size: 1.1rem;
+        font-weight: 600;
+
+        &.active {
+            border-bottom: 1px solid $color-secondary;
+        }
+
+        &:hover {
+            color: $color-secondary-hover;
+        }
+    }
+
+    // Oculta Navbar en mobile
+    @media (max-width: map.get($grid-breakpoints, md)) {
+        display: none;
+    }
+
+    /*  VARIANTE PARA DRAWER */
+    &--drawer {
+        display: block !important;
+
+        .navbar__navigation {
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .navbar__link {
+            font-size: 1.2rem;
+            width: 100%;
+            padding: 0;
+
+            &:hover {
+                color: $color-secondary-hover;
+            }
+        }
+    }
+}

@@ -4,7 +4,7 @@
 @mixin create-container-width () {
     max-width: 100%;
 
-    @each $bp, $w in $grid-breackpoints {
+    @each $bp, $w in $grid-breakpoints {
         @media (min-width: $w) {
             max-width: map.get($grid-width, $bp);
         }

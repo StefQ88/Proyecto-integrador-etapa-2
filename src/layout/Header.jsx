@@ -1,76 +1,63 @@
-import { NavLink } from "react-router-dom";
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 
-import logo from "../assets/logo.png";
 import Box from "../components/Box";
-import Container from "../components/Container";
 import Text from "../components/Text";
 import Button from "../components/Button";
+import Container from "../components/Container";
+
+import DrawerMenu from "../components/DrawerMenu";
+
+import Navbar from "./Navbar";
+import logo from "../assets/logo.png";
 
 function Header() {
-  const [isSearchVisible, setSearchVisible] = useState(false);
-  const [isMobileMenuVisible, setMobileMenuVisible] = useState(false);
+  const [openDrawer, setOpenDrawer] = useState(false);
+
+  const links = [
+    { to: "/", label: "Inicio" },
+    { to: "/upload", label: "Alta" },
+    { to: "/contact-us", label: "Contacto" },
+    { to: "/about-us", label: "Sobre Nosotros" },
+  ];
 
   return (
     <>
+      {/* Header principal */}
       <Box as="header" className="header">
-        <Container className="header__container">
-          {/* Izquierda- Logo + texto */}
-          <Box className="header__logo">
-            <NavLink to="/" className="header__logo-link">
-              <img src={logo} alt="Logo Juguetería Cósmica" />
-            </NavLink>
-            <Box>
-              <Text as="h1">Juguetería Cósmica</Text>
-              <Text as="span">Descubrí tu universo de juegos</Text>
-            </Box>
-          </Box>
+        <Box className="header__background">
+          <Container className="header__container">
+            {/* Logo + título */}
 
-          {/* Navegación */}
-          <Box>
-            <Box as="nav" className="header__navbar">
-              <ul>
-                <li>
-                  <NavLink to="/">Inicio</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/upload">Alta de productos</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/contact-us">Contáctanos</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/about-us">Sobre Nosotros</NavLink>
-                </li>
-              </ul>
+            <Box className="header__left">
+              <NavLink to="/" className="header__brand">
+                <img src={logo} alt="Logo Juguetería Cósmica" />
+              </NavLink>
+              <Box>
+                <Text as="h1">Juguetería Cósmica</Text>
+                <Text as="span">Descubrí tu universo de juegos</Text>
+              </Box>
             </Box>
 
-            {/* Íconos */}
-            <Box className="header__actions">
-              <Button className="header__icon" onClick={() => setSearchVisible((p) => !p)}>
+            <Navbar links={links} />
+
+            {/* ícono menu */}
+            <Box className="header__actions mobile-only">
+              <Button className="header__actions-btn" onClick={() => setOpenDrawer(true)}>
                 <FontAwesomeIcon icon={faBars} />
               </Button>
-              <Button className="header__icon" onClick={() => setMobileMenuVisible((prev) => !prev)}>
-                <FontAwesomeIcon icon={faMagnifyingGlass} />
-              </Button>
+              {/* <Cart /> */}
             </Box>
-
-            {/* Buscador */}
-            {isSearchVisible && (
-              <Box as="aside" className="menu">
-                <Text as="h2" className="menu__title">
-                  Menú
-                </Text>
-                <Box as="nav" className="menu__navigation">
-                  <ul></ul>
-                </Box>
-              </Box>
-            )}
-          </Box>
-        </Container>
+          </Container>
+        </Box>
       </Box>
+
+      {/* Menú lateral Drawer (mobile) */}
+      <DrawerMenu show={openDrawer} closeMenu={() => setOpenDrawer(false)}>
+        <Navbar links={links} variant="drawer" onClickLink={() => setOpenDrawer(false)} />
+      </DrawerMenu>
     </>
   );
 }

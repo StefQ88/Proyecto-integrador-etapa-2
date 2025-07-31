@@ -3,4 +3,11 @@
 @use "utils/variables";
 
 
-@use "layout/header"
+@use "base/reset";
+
+@use "components/cart";
+@use "components/drawer";
+
+@use "layout/container";
+@use "layout/header";
+@use "layout/navbar";

@@ -1,0 +1,8 @@
+@use "../utils/mixins" as *;
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    @include create-container-width();
+}

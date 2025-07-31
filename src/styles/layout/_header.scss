@@ -1,0 +1,85 @@
+@use "sass:map";
+@use "../utils/variables" as *;
+
+.header {
+    width: 100%;
+
+
+    &__background {
+        background-color: $color-primary;
+        color: $color-white;
+        padding: 1rem 0;
+        width: 100%;
+        border-top: 8px solid $color-secondary;
+    }
+
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__left {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+    }
+
+    &__brand {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        img {
+            max-width: 120px;
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    h1 {
+        background: linear-gradient(70deg, $secondary-color, $tertiary-color);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-family: $font-tertiary;
+        font-size: 2rem;
+        font-weight: 800;
+        margin: 0;
+    }
+
+    span {
+        font-size: 1rem;
+        margin-top: 0.2rem;
+        font-family: $font-secondary;
+        color: $color-white;
+    }
+
+    &__actions {
+        display: none; // Oculto por defecto 
+
+        @media (max-width: map.get($grid-breakpoints, md)) {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    &__actions-btn {
+        background: none;
+        border: none;
+        padding: 0.5rem;
+        cursor: pointer;
+
+        // Contorno solo en hover
+        &:hover {
+            border: 2px solid $color-secondary-hover;
+            border-radius: 8px;
+        }
+
+        svg {
+            font-size: 1.5rem;
+            color: $color-white;
+        }
+    }
+}
