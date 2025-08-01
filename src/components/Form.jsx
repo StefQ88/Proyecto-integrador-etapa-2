@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import Button from "./Button";
 
-function Form({ inputsArray, values, errors, onChange, onBlur, onSubmit, submitted }) {
+function Form({ inputsArray, values, errors, onChange, onBlur, onSubmit, submitted, children }) {
   return (
     <Box
       as="form"
@@ -180,6 +180,8 @@ function Form({ inputsArray, values, errors, onChange, onBlur, onSubmit, submitt
           </Box>
         );
       })}
+
+      {children}
 
       {/* botón de submit */}
       <Box className="form__actions">
