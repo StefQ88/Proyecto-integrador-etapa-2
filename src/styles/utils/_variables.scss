@@ -26,22 +26,25 @@ $hide-sm-max: 768px;
 
 // COLOR PALETTE
 
-$color-primary: #1E40AF;
-$color-primary-hover: #1D4ED8;
-$color-primary-light: #93C5FD;
+$color-primary: #163fc7;
+$color-primary-hover: #112c84;
+$color-primary-active: #0a1b4d;
+
 
 $color-secondary: #F97316;
 $color-secondary-hover: #EA580C;
-$color-secondary-light: #FED7AA;
+$color-secondary-active: #c2410c; // más oscuro que hover
+
 
 $color-tertiary: #FACC15;
 $color-tertiary-hover: #EAB308;
-$color-tertiary-light: #FEF9C3;
+$color-tertiary-active: #ca8a04;
+
 
 $color-danger: #EF4444;
-$color-danger-hover: #DC2626;
+$color-danger-active: #b91c1c;
 
-$color-success: #22C55E;
+
 
 $color-white: #FFFFFF; // Fondo general
 $color-gray-light: #F3F4F6; // Fondo alternativo, tarjetas
@@ -52,12 +55,6 @@ $color-gray-dark: #111827; // Texto principal, íconos oscuros
 $overlay-color: rgba(0, 0, 0, 0.6);
 
 
-$primary-color: $color-primary;
-$secondary-color: $color-secondary;
-$tertiary-color: $color-tertiary;
-$success-color: $color-success;
-$warning-color: $color-tertiary;
-$danger-color: $color-danger;
 
 
 // LAYOUT / GENERAL

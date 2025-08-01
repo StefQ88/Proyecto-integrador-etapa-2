@@ -1,0 +1,125 @@
+@use "sass:map";
+@use "../utils/variables" as *;
+
+
+.form {
+
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+
+
+    &__group {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 0.3rem;
+    }
+
+    &__label {
+        font-weight: 600;
+        font-size: 1rem;
+        text-align: left;
+        color: $color-primary;
+        font-family: $font-primary;
+
+        &.is-required::after {
+            content: " *";
+            color: $color-danger;
+        }
+    }
+
+    //  Inputs / Textareas / Selects
+    &__input {
+        display: block;
+        width: 100%;
+        padding: 0.5rem 0.75rem;
+        border: 1.5px solid $color-primary;
+        border-radius: 0.5rem;
+        font-size: 1rem;
+        color: $color-gray-dark;
+        font-family: $font-tertiary;
+
+        &:focus {
+            outline: none;
+        }
+
+        &.with-error {
+            border-color: $color-danger;
+        }
+    }
+
+    textarea.form__input {
+        min-height: 6rem;
+        resize: vertical;
+    }
+
+    select.form__input {
+        background-color: $color-white;
+        font-size: 1rem;
+    }
+
+
+    //mensaje de error
+    &__error {
+        font-size: 0.9rem;
+        text-align: left;
+        color: $color-danger;
+        line-height: 1.2;
+    }
+
+    &__inline-group {
+        display: flex;
+        gap: 1rem;
+        width: 100%;
+    }
+
+    &__checkbox-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        cursor: pointer;
+
+        span {
+            font-weight: 600;
+            color: $color-primary;
+        }
+    }
+
+    &__checkbox {
+        width: 1.2rem;
+        height: 1.2rem;
+        accent-color: $color-secondary;
+    }
+
+    &__file-wrapper {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    &__input[type="file"] {
+        padding: 0.4rem;
+        font-size: 0.9rem;
+        overflow: hidden;
+        width: 100%;
+        box-sizing: border-box;
+
+        @media screen and (max-width: map-get($grid-breakpoints, sm)) {
+            font-size: 0.7rem;
+        }
+    }
+
+    &__actions {
+        width: 100%;
+        margin-top: 1rem;
+
+        .btn {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 600;
+        }
+    }
+}

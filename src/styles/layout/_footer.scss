@@ -1,0 +1,64 @@
+@use "sass:map";
+@use "../utils/variables" as *;
+
+.footer {
+    background-color: $footer-bg-color;
+    color: $color-white;
+    padding: 1rem 0;
+    width: 100%;
+    margin-top: auto;
+
+    &__container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        text-align: center;
+
+        @media (min-width: map.get($grid-breakpoints, lg)) {
+            max-width: 75%;
+            margin: 0 auto;
+            grid-template-columns: repeat(3, 1fr); // 3 columnas iguales
+            align-items: center;
+        }
+    }
+
+    &__col {
+        padding: 0.5rem 0;
+
+        @media (min-width: map.get($grid-breakpoints, lg)) {
+            border-bottom: none;
+            border-right: 1px solid $color-gray-medium;
+
+            &:last-child {
+                border-right: none; // saco la última línea
+            }
+        }
+    }
+
+    &__title {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+
+    &__social {
+        display: flex;
+        gap: 0.8rem;
+        justify-content: center;
+        margin-top: 0.5rem;
+
+        a {
+            font-size: 1.2rem;
+            color: $color-white;
+
+            &:hover {
+                color: $color-secondary;
+            }
+        }
+    }
+
+    &__copyright {
+        font-size: 0.8rem;
+        opacity: 0.75;
+    }
+}

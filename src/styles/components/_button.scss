@@ -1,0 +1,73 @@
+@use "../utils/variables" as *; // tus variables de color, tipografía, etc.
+@use "sass:map";
+
+.btn {
+    display: inline-flex; // Flex para alinear ícono + texto
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem; // Separación entre ícono y texto
+    font-family: $font-primary;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.6rem 1.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+
+
+    width: 100%;
+    margin: 0 auto;
+
+    // =============================
+    // VARIANTES
+    // =============================
+
+    &--solid {
+        &-primary {
+            background-color: $color-primary;
+            color: $color-white;
+            border-color: $color-primary;
+
+            &:hover {
+                background-color: $color-primary-hover;
+                border-color: $color-primary-hover;
+            }
+
+            &:active {
+                background-color: $color-primary-active;
+                border-color: $color-primary-active;
+            }
+        }
+    }
+
+
+    &-secondary {
+        background-color: $color-secondary;
+        color: $color-white;
+        border-color: $color-secondary;
+
+        &:hover {
+            background-color: $color-secondary-hover;
+            border-color: $color-secondary-hover;
+        }
+
+        &:active {
+            background-color: $color-secondary-active; // definilo en tu paleta
+            border-color: $color-secondary-active;
+        }
+    }
+
+    // Variante outline 
+    &--outline {
+        &-primary {
+            background-color: transparent;
+            color: $color-primary;
+            border-color: $color-primary;
+
+            &:hover {
+                background-color: rgba($color-primary, 0.05);
+            }
+        }
+    }
+}

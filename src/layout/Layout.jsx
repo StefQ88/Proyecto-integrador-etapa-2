@@ -1,16 +1,16 @@
-import { Outlet } from "react-router-dom";
+import Box from "../components/Box";
 import Header from "./Header";
 import Footer from "./Footer";
-import Box from "../components/Box";
+import { Outlet } from "react-router-dom";
 
-function Layout() {
+export default function Layout() {
   return (
-    <Box>
+    <Box className="site-wrapper">
       <Header />
-      <Outlet />
+      <Box as="main" className="main">
+        <Outlet />
+      </Box>
       <Footer />
     </Box>
   );
 }
-
-export default Layout;
