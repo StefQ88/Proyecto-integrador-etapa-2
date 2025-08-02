@@ -7,6 +7,7 @@
     &__navigation {
         list-style: none;
         display: flex;
+        align-items: center;
         gap: 2rem;
         margin: 0;
         padding: 0;
@@ -28,10 +29,29 @@
         }
     }
 
+    &__item--cart {
+        margin-left: auto; // Empuja el carrito a la derecha (opcional)
+        display: flex;
+        align-items: center;
+    }
+
+
+
+
+
+
+
     // Oculta Navbar en mobile
     @media (max-width: map.get($grid-breakpoints, md)) {
         display: none;
     }
+
+
+
+
+
+
+
 
     /*  VARIANTE PARA DRAWER */
     &--drawer {

@@ -4,6 +4,7 @@ const Button = ({
   type = "button",
   variant = "solid",
   color = "primary",
+  size = "md",
   children,
   className = "",
   ...rest //resto de las props
@@ -12,6 +13,7 @@ const Button = ({
     btn
     btn--${variant}
     btn--${variant}-${color} 
+    btn--${size}
     ${className}
     `.trim();
 

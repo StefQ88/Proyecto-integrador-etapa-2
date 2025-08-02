@@ -5,10 +5,11 @@
 
 @use "base/reset";
 
-@use "components/cart";
+@use "components/card";
 @use "components/drawer";
 @use "components/form";
 @use "components/button";
+@use "components/modal";
 
 @use "layout/container";
 @use "layout/header";

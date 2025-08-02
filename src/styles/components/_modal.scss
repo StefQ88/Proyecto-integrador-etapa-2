@@ -1,0 +1,35 @@
+@use "sass:map";
+@use "../utils/variables" as *;
+
+.modal__overlay {
+    position: fixed;
+    inset: 0; // shorthand para top: 0; right: 0; bottom: 0; left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $overlay-color;
+    z-index: 2;
+    padding: 1rem; // evita que el contenido se pegue en mobile
+}
+
+.modal__content {
+    background-color: $color-white;
+    color: $color-gray-dark;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    width: 100%;
+    max-width: 500px;
+    min-height: 40vh;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    margin: 0 auto;
+
+    @media screen and (max-width: map.get($grid-breakpoints, md)) {
+        margin: 0 1rem; // en pantallas chicas, deja margen 
+    }
+}
+
+.modal__close {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}

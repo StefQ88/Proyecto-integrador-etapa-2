@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import Cart from "../components/Cart";
 
 export default function Navbar({ links = [], onClickLink, variant = "default" }) {
   return (
@@ -15,6 +16,11 @@ export default function Navbar({ links = [], onClickLink, variant = "default" })
             </NavLink>
           </li>
         ))}
+
+        {/* Ícono del carrito */}
+        <li className="navbar__item navbar__item--cart">
+          <Cart />
+        </li>
       </ul>
     </nav>
   );

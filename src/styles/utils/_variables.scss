@@ -32,7 +32,7 @@ $color-primary-active: #0a1b4d;
 
 
 $color-secondary: #F97316;
-$color-secondary-hover: #EA580C;
+$color-secondary-hover: #b94a0e;
 $color-secondary-active: #c2410c; // más oscuro que hover
 
 
@@ -88,4 +88,5 @@ $spacings: (
     pb: padding-bottom,
     pl: padding-left,
     pr: padding-right,
+    gp: gap,
 );
