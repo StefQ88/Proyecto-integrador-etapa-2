@@ -7,7 +7,7 @@ const Button = ({
   size = "md",
   children,
   className = "",
-  ...rest //resto de las props
+  ...rest
 }) => {
   const fullClass = `
     btn
@@ -19,7 +19,7 @@ const Button = ({
 
   return (
     <button type={type} className={fullClass} {...rest}>
-      {children} {/* se muestra dentro del botón */}
+      {children}
     </button>
   );
 };

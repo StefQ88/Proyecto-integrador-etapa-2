@@ -1,0 +1,126 @@
+@use "sass:map";
+@use "../utils/variables" as *;
+
+
+
+.cart__container {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.cart__badge {
+    position: absolute;
+    top: -2px;
+    right: -12px;
+    min-width: 15px;
+    min-height: 15px;
+    background: $color-secondary;
+    color: $color-white;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px 4px;
+    border: 2px solid $color-white;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07);
+}
+
+.cart__list {
+    max-height: 50vh;
+    overflow-y: auto;
+    margin-bottom: 1rem;
+
+}
+
+.cart__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border-bottom: 1px solid $color-gray-light;
+    padding: 0.5rem 0;
+    background: none;
+}
+
+.cart__img {
+    width: 54px;
+    height: 54px;
+    object-fit: contain;
+    border-radius: 0.5rem;
+    background: $color-gray-light;
+    flex-shrink: 0;
+}
+
+.cart__info {
+    min-width: 0;
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.cart__name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    font-family: $font-secondary;
+}
+
+.cart__unitprice {
+    font-size: 0.97rem;
+    color: $color-gray-dark;
+}
+
+
+.cart__subtotal {
+    font-weight: bold;
+    color: $color-secondary;
+    min-width: 70px;
+    text-align: right;
+    margin-left: 0.5rem;
+    font-size: 1.1rem;
+    font-family: $font-secondary;
+}
+
+.cart__qty-controls {
+    gap: 0.5rem;
+}
+
+.cart__total {
+    font-size: 1.15rem;
+    font-weight: bold;
+    padding-top: 1rem;
+    border-top: 2px solid $color-gray-light;
+    font-family: $font-secondary;
+}
+
+@media (max-width: map.get($grid-breakpoints, sm)) {
+    .modal__content {
+        max-width: 85vw;
+        padding: 1rem 0.5rem;
+    }
+
+    .cart__item {
+        gap: 0.25rem;
+        font-size: 0.92rem;
+        flex-wrap: wrap;
+    }
+
+    .cart__img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .cart__name {
+        font-size: 0.9rem;
+        font-weight: 600;
+    }
+
+    .cart__subtotal {
+        min-width: 40px;
+        font-size: 0.7rem;
+    }
+}

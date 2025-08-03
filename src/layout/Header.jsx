@@ -1,36 +1,32 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
-
+import { faBars, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import Box from "../components/Box";
 import Text from "../components/Text";
 import Button from "../components/Button";
 import Container from "../components/Container";
-
 import DrawerMenu from "../components/DrawerMenu";
-
 import Navbar from "./Navbar";
 import logo from "../assets/logo.png";
+import { CartContext } from "../context/CartContext";
 
-function Header() {
+function Header({ openCartModal }) {
   const [openDrawer, setOpenDrawer] = useState(false);
+  const { totalQuantity } = useContext(CartContext);
 
   const links = [
     { to: "/", label: "Inicio" },
     { to: "/upload", label: "Alta" },
     { to: "/contact-us", label: "Contacto" },
-    { to: "/about-us", label: "Sobre Nosotros" },
+    { to: "/about-us", label: "Nosotros" },
   ];
 
   return (
     <>
-      {/* Header principal */}
       <Box as="header" className="header">
         <Box className="header__background">
           <Container className="header__container">
-            {/* Logo + título */}
-
             <Box className="header__left">
               <NavLink to="/" className="header__brand">
                 <img src={logo} alt="Logo Juguetería Cósmica" />
@@ -41,21 +37,25 @@ function Header() {
               </Box>
             </Box>
 
-            <Navbar links={links} />
-
-            {/* ícono menu */}
-            <Box className="header__actions mobile-only">
-              <Button className="header__actions-btn" onClick={() => setOpenDrawer(true)}>
-                <FontAwesomeIcon icon={faBars} />
-              </Button>
-              {/* <Cart /> */}
+            <Box className="header__right">
+              <Navbar links={links} />
+              <Box className="cart__container header__cart" onClick={openCartModal}>
+                <span className="cart__iconbox">
+                  <FontAwesomeIcon icon={faShoppingCart} className="cart__icon" />
+                  <span className="cart__badge">{totalQuantity}</span>
+                </span>
+              </Box>
+              <Box className="header__actions mobile-only">
+                <Button className="header__actions-btn" onClick={() => setOpenDrawer(true)}>
+                  <FontAwesomeIcon icon={faBars} />
+                </Button>
+              </Box>
             </Box>
           </Container>
         </Box>
       </Box>
 
-      {/* Menú lateral Drawer (mobile) */}
-      <DrawerMenu show={openDrawer} closeMenu={() => setOpenDrawer(false)}>
+      <DrawerMenu show={openDrawer} closeMenu={() => setOpenDrawer(false)} openCartModal={openCartModal}>
         <Navbar links={links} variant="drawer" onClickLink={() => setOpenDrawer(false)} />
       </DrawerMenu>
     </>

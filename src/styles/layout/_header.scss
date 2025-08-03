@@ -21,9 +21,13 @@
 
     &__left {
         display: flex;
-        justify-content: space-between;
         align-items: center;
+    }
 
+    &__right {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
     }
 
     &__brand {
@@ -38,6 +42,7 @@
         }
     }
 
+    //titulos
     h1 {
         background: linear-gradient(70deg, $color-secondary, $color-tertiary);
         background-clip: text;
@@ -57,7 +62,7 @@
     }
 
     &__actions {
-        display: none; // Oculto por defecto 
+        display: none;
 
         @media (max-width: map.get($grid-breakpoints, md)) {
             display: flex;
@@ -71,7 +76,6 @@
         padding: 0.5rem;
         cursor: pointer;
 
-        // Contorno solo en hover
         &:hover {
             border: 2px solid $color-secondary-hover;
             border-radius: 8px;
@@ -82,4 +86,32 @@
             color: $color-white;
         }
     }
+
+    &__cart {
+        @media (max-width: map.get($grid-breakpoints, md)) {
+            display: none;
+        }
+
+    }
+
+}
+
+.cart__iconbox {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart__icon {
+    font-size: 2rem;
+    color: $color-white;
+}
+
+.cart__badge {
+    top: -4px;
+    right: -10px;
+    min-width: 18px;
+    min-height: 18px;
+    padding: 2px 5px;
 }

@@ -3,13 +3,13 @@
 
 .modal__overlay {
     position: fixed;
-    inset: 0; // shorthand para top: 0; right: 0; bottom: 0; left: 0;
+    inset: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: $overlay-color;
     z-index: 2;
-    padding: 1rem; // evita que el contenido se pegue en mobile
+    padding: 1rem;
 }
 
 .modal__content {
@@ -18,13 +18,24 @@
     border-radius: 1rem;
     padding: 1.5rem;
     width: 100%;
-    max-width: 500px;
+    max-width: 800px;
     min-height: 40vh;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     margin: 0 auto;
 
     @media screen and (max-width: map.get($grid-breakpoints, md)) {
-        margin: 0 1rem; // en pantallas chicas, deja margen 
+        margin: 0 1rem;
+    }
+
+    h3 {
+        color: $color-primary;
+        font-size: 1.2rem;
+        font-family: $font-secondary;
+    }
+
+    p {
+        color: $color-gray-dark;
+        font-size: 1rem;
     }
 }
 

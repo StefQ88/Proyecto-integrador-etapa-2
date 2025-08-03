@@ -6,7 +6,15 @@
 @each $key, $prop in $spacings {
     @for $i from 0 through 12 {
         .#{$key}-#{$i} {
-            #{$prop}: $i * 0.25rem;
+            @if meta.type-of($prop)=='list' {
+                @each $side in $prop {
+                    #{$side}: #{$i * 0.25rem};
+                }
+            }
+
+            @else {
+                #{$prop}: #{$i * 0.25rem};
+            }
         }
     }
 }
@@ -56,6 +64,11 @@
 .align-start {
     align-items: flex-start;
 }
+
+.align-end {
+    align-items: end
+}
+
 
 .flex-d-row-reverse {
     flex-direction: row-reverse;

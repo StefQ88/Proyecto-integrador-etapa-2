@@ -20,10 +20,6 @@ $grid-width: (
 );
 
 
-// Breakpoint para ocultar elementos en pantallas chicas (menores a md = 768px)
-$hide-sm-max: 768px;
-
-
 // COLOR PALETTE
 
 $color-primary: #163fc7;
@@ -33,28 +29,23 @@ $color-primary-active: #0a1b4d;
 
 $color-secondary: #F97316;
 $color-secondary-hover: #b94a0e;
-$color-secondary-active: #c2410c; // más oscuro que hover
+$color-secondary-active: #c2410c;
 
 
 $color-tertiary: #FACC15;
-$color-tertiary-hover: #EAB308;
-$color-tertiary-active: #ca8a04;
-
 
 $color-danger: #EF4444;
+$color-danger-hover: #bd3535;
 $color-danger-active: #b91c1c;
 
 
 
 $color-white: #FFFFFF; // Fondo general
-$color-gray-light: #F3F4F6; // Fondo alternativo, tarjetas
-$color-gray-medium: #D1D5DB;
-$color-gray-dark: #111827; // Texto principal, íconos oscuros
+$color-gray-light: #F3F4F6;
+$color-gray-dark: #111827; // Texto principal
 
 
 $overlay-color: rgba(0, 0, 0, 0.6);
-
-
 
 
 // LAYOUT / GENERAL
@@ -62,11 +53,8 @@ $overlay-color: rgba(0, 0, 0, 0.6);
 $body-bg-color: $color-white;
 $header-bg-color: $color-primary;
 $footer-bg-color: $color-primary;
+
 $grid-columns: 12;
-$grid-gap: 2rem;
-
-$card-min-width: 280px;
-
 
 // FUENTES
 
@@ -83,10 +71,14 @@ $spacings: (
     mb: margin-bottom,
     ml: margin-left,
     mr: margin-right,
+    mx: margin-left margin-right,
+    my: margin-top margin-bottom,
     p: padding,
     pt: padding-top,
     pb: padding-bottom,
     pl: padding-left,
     pr: padding-right,
+    px: padding-left padding-right,
+    py: padding-top padding-bottom,
     gp: gap,
 );

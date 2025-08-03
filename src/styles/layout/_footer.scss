@@ -28,7 +28,7 @@
 
         @media (min-width: map.get($grid-breakpoints, lg)) {
             border-bottom: none;
-            border-right: 1px solid $color-gray-medium;
+            border-right: 1px solid $color-white;
 
             &:last-child {
                 border-right: none; // saco la última línea

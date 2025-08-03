@@ -6,14 +6,7 @@ import Button from "./Button";
 
 function Form({ inputsArray, values, errors, onChange, onBlur, onSubmit, submitted, children }) {
   return (
-    <Box
-      as="form"
-      className="form"
-      onSubmit={(e) =>
-        onSubmit(e, (vals) => {
-          console.log("Datos enviados:", vals);
-        })
-      }>
+    <Box as="form" className="form" onSubmit={onSubmit}>
       {inputsArray.map((input) => {
         const { name, label, type, options, required, fields } = input;
         const errorClass = errors[name] ? " with-error" : "";
@@ -56,6 +49,7 @@ function Form({ inputsArray, values, errors, onChange, onBlur, onSubmit, submitt
                       onChange={onChange}
                       onBlur={onBlur}
                       className={`form__input${errors[field.name] ? " with-error" : ""}`}
+                      min={field.type === "number" ? 0 : undefined}
                     />
                   )
                 )}
@@ -128,7 +122,7 @@ function Form({ inputsArray, values, errors, onChange, onBlur, onSubmit, submitt
           );
         }
 
-        // Inputs
+        // Inputs normales
 
         return (
           <Box key={name} className="form__group">
@@ -169,6 +163,7 @@ function Form({ inputsArray, values, errors, onChange, onBlur, onSubmit, submitt
                 onChange={onChange}
                 onBlur={onBlur}
                 className={`form__input${errorClass}`}
+                min={type === "number" ? 0 : undefined}
               />
             )}
 

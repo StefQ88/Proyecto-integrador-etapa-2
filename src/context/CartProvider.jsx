@@ -1,23 +1,29 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { CartContext } from "../context/CartContext";
 
 function CartProvider({ children }) {
-  const [cart, setCart] = useState([]); // Estructura: { prod: {}, quantity: number }
+  // carga carrito desde localStorage
+  const [cart, setCart] = useState(() => {
+    const stored = localStorage.getItem("cart");
+    return stored ? JSON.parse(stored) : [];
+  });
 
+  // guarda carrito en localStorage cada vez que cambia
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
+  //actualizo o elimino producto
   const setQuantity = (product, quantity) => {
-    const { id } = product; //extrae el id
+    const { id } = product;
 
     if (!quantity) {
-      // Si la cantidad es 0 o falsa se elimina
       setCart(cart.filter(({ prod }) => prod.id !== id));
     } else {
       const found = cart.find(({ prod }) => prod.id === id);
-
       if (!found) {
-        // agrega nuevo producto
         setCart([...cart, { prod: product, quantity }]);
       } else {
-        // s ya estaba se ctualiza la cantidad
         setCart(
           cart.map(({ prod, quantity: q }) => (prod.id === id ? { prod: product, quantity } : { prod, quantity: q }))
         );
@@ -25,9 +31,23 @@ function CartProvider({ children }) {
     }
   };
 
+  const removeProduct = (id) => {
+    setCart(cart.filter(({ prod }) => prod.id !== id));
+  };
+
   const totalQuantity = cart.reduce((acc, { quantity }) => acc + quantity, 0);
 
-  return <CartContext.Provider value={{ cart, setQuantity, totalQuantity }}>{children}</CartContext.Provider>;
+  return (
+    <CartContext.Provider
+      value={{
+        cart,
+        setQuantity,
+        totalQuantity,
+        removeProduct,
+      }}>
+      {children}
+    </CartContext.Provider>
+  );
 }
 
 export default CartProvider;

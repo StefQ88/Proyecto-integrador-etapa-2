@@ -7,10 +7,10 @@
     display: grid;
     grid-template-columns: repeat($grid-columns, 1fr); //12 columnas
     column-gap: 1.5rem;
-    row-gap: 3rem;
+    row-gap: 2rem;
 
     @media screen and (max-width: map.get($grid-breakpoints, sm)) {
-        grid-template-columns: 1fr; //1 columna en mobil
+        grid-template-columns: 1fr;
         column-gap: 0.5rem;
     }
 }

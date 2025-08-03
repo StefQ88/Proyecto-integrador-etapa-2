@@ -6,7 +6,9 @@ import ProductGrid from "../layout/ProductGrid";
 function Home() {
   return (
     <Container>
-      <Text as="h2">Productos</Text>
+      <Text as="h2" className="section-title my-6">
+        Productos
+      </Text>
       <ProductGrid />
     </Container>
   );

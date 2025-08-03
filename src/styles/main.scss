@@ -4,20 +4,22 @@
 
 
 @use "base/reset";
+@use "base/base";
 
 @use "components/card";
 @use "components/drawer";
 @use "components/form";
 @use "components/button";
 @use "components/modal";
+@use "components/cart";
 
 @use "layout/container";
 @use "layout/header";
 @use "layout/navbar";
 @use "layout/footer";
-@use "layout/site-wrapper";
 @use "layout/grid";
 
 
 @use "pages/contactUs";
-@use "pages/upload"
+@use "pages/upload";
+@use "pages/about"

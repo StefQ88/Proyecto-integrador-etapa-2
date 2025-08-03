@@ -132,7 +132,7 @@
         width: 100%;
         box-sizing: border-box;
 
-        @media screen and (max-width: map-get($grid-breakpoints, sm)) {
+        @media screen and (max-width: map.get($grid-breakpoints, sm)) {
             font-size: 0.7rem;
         }
     }

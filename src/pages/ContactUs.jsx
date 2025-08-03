@@ -3,6 +3,7 @@ import Box from "../components/Box";
 import Form from "../components/Form";
 import Container from "../components/Container";
 import useForm from "../hooks/useForm";
+import { useState } from "react";
 
 const contactInputs = [
   { name: "name", label: "Nombre", type: "text", required: true },
@@ -61,6 +62,20 @@ function ContactUs() {
     contactValidations
   );
 
+  const [showSuccess, setShowSuccess] = useState(false);
+
+  const handleSubmit = (e) =>
+    onSubmit(e, (vals) => {
+      const prevMsgs = JSON.parse(localStorage.getItem("contactMessages") || "[]");
+      prevMsgs.push(vals);
+      localStorage.setItem("contactMessages", JSON.stringify(prevMsgs));
+      setShowSuccess(true);
+      setTimeout(() => {
+        setShowSuccess(false);
+        resetForm();
+      }, 2000);
+    });
+
   return (
     <Box as="main" className="contact">
       <Container className="contact__container">
@@ -76,14 +91,15 @@ function ContactUs() {
               errors={errors}
               onChange={onChange}
               onBlur={onBlur}
-              onSubmit={(e) =>
-                onSubmit(e, (vals) => {
-                  console.log("Datos enviados:", vals);
-                  resetForm();
-                })
-              }
+              onSubmit={handleSubmit}
               submitted={submitted}
             />
+
+            {showSuccess && (
+              <Text as="p" className="form__success">
+                Se guardó el mensaje localmente
+              </Text>
+            )}
           </Box>
         </Box>
       </Container>

@@ -1,3 +1,5 @@
+@use "../utils/variables" as *;
+
 *,
 *::before,
 *::after {
@@ -12,13 +14,8 @@ body {
     overflow-x: hidden;
     margin: 0;
     padding: 0;
+    background-color: $body-bg-color;
 }
-
-// body {
-//     font-family: $font-tertiary;
-//     line-height: 1.5;
-//     background-color: $body-bg-color;
-// }
 
 a {
     text-decoration: none;

@@ -1,73 +1,68 @@
-import React from "react";
-
 import { useState } from "react";
 
-export const useForm = (initialValues, validations) => {
+const useForm = (initialValues, validations) => {
   const [values, setValues] = useState(initialValues);
   const [errors, setErrors] = useState({});
-  const [submittted, setSubmitted] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
-  //se dispara al cambiar el input
   const onChange = ({ target }) => {
     const { name, type, value, checked, files } = target;
 
     let newValue = value;
     if (type === "checkbox") newValue = checked;
-    if (type === "file") newValue = files[0] || null; //primer archivo o null
+    if (type === "file") newValue = files[0] || null;
 
-    setValues((prev) => ({
-      ...prev,
-      [name]: newValue, //sobre escribe solo el cambio
-    }));
+    // objeto actualizado con el valor nuevo
+    const updatedValues = {
+      ...values,
+      [name]: newValue,
+    };
 
+    setValues(updatedValues);
+
+    // Validación para el campo
     if (validations[name]) {
       const { validation, errorText } = validations[name];
-
+      const result = validation(newValue, updatedValues);
       setErrors((prev) => ({
         ...prev,
-        [name]: validation(newValue, values) ? "" : errorText,
+        [name]: result === true ? "" : result || errorText,
       }));
     }
   };
 
-  //Validacion individual, se dispara cuando el input pierde el foco
   const onBlur = ({ target }) => {
     const { name } = target;
     if (validations[name]) {
       const { validation, errorText } = validations[name];
+      const result = validation(values[name], values);
       setErrors((prev) => ({
         ...prev,
-        [name]: validation(values[name], values) ? "" : errorText,
+        [name]: result === true ? "" : result || errorText,
       }));
     }
   };
 
-  //Validacion total del formulario al enviarlo, recorre todas las validaciones
   const validateAll = () => {
     const newErrors = {};
-
     for (const field in validations) {
       const { validation, errorText } = validations[field];
-      const isValid = validation(values[field], values);
-
-      if (!isValid) newErrors[field] = errorText;
+      const result = validation(values[field], values);
+      if (result !== true) newErrors[field] = result || errorText;
     }
-
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0; //true si el formulario es valido
+    return Object.keys(newErrors).length === 0;
   };
 
-  //Submit
   const onSubmit = (e, callback) => {
     e.preventDefault();
-    const isValid = validateAll(); //validacion antes
+    const isValid = validateAll();
     if (isValid && callback) {
       callback(values);
-      setSubmitted(true); //booleano, flag para mostrar mensaje de exito
+      setSubmitted(true);
     }
   };
 
-  //Reset
   const resetForm = () => {
     setValues(initialValues);
     setErrors({});
@@ -81,7 +76,7 @@ export const useForm = (initialValues, validations) => {
     onBlur,
     validateAll,
     onSubmit,
-    submittted,
+    submitted,
     resetForm,
   };
 };

@@ -3,7 +3,7 @@
 
 .navbar {
 
-    // Por defecto visible en desktop
+    // Visible en desktop
     &__navigation {
         list-style: none;
         display: flex;
@@ -17,7 +17,7 @@
         color: $color-white;
         text-decoration: none;
         font-family: $font-secondary;
-        font-size: 1.1rem;
+        font-size: 1.2rem;
         font-weight: 600;
 
         &.active {
@@ -29,33 +29,15 @@
         }
     }
 
-    &__item--cart {
-        margin-left: auto; // Empuja el carrito a la derecha (opcional)
-        display: flex;
-        align-items: center;
-    }
-
-
-
-
-
-
-
-    // Oculta Navbar en mobile
     @media (max-width: map.get($grid-breakpoints, md)) {
-        display: none;
+        &:not(&--drawer) {
+            display: none;
+        }
     }
-
-
-
-
-
-
-
 
     /*  VARIANTE PARA DRAWER */
     &--drawer {
-        display: block !important;
+        display: block;
 
         .navbar__navigation {
             flex-direction: column;
