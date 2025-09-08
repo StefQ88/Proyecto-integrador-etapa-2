@@ -7,18 +7,18 @@ const axiosInstance = axios.create({
 
 // Obtener todos los productos
 export const getProducts = async () => {
-  const resp = await axiosInstance.get(""); // "" = endpoint raíz de products
-  return resp.data;
+  const resp = await axiosInstance.get("/products");
+  return resp.data.products;
 };
 
 // Crear producto nuevo
 export const postProduct = async (body) => {
-  const resp = await axiosInstance.post("", body); // "" para POST a la colección products
-  return resp.data;
+  const resp = await axiosInstance.post("/products", body);
+  return resp.data.products;
 };
 
 // Obtener producto por ID
 export const getProductById = async (id) => {
-  const resp = await axiosInstance.get(`/${id}`);
+  const resp = await axiosInstance.get(`products/${id}`);
   return resp.data;
 };

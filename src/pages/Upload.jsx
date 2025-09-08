@@ -73,7 +73,7 @@ const uploadInputs = [
   { name: "shortDescription", label: "Descripción corta", type: "textarea", required: true },
   { name: "largeDescription", label: "Descripción larga", type: "textarea" },
   { name: "freeDelivery", label: "Envío sin cargo", type: "checkbox" },
-  { name: "image", label: "Imagen (URL)", type: "url", required: true },
+  { name: "image", label: "Imagen", type: "file", required: true },
 ];
 
 // Validaciones
