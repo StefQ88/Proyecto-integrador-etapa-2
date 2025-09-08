@@ -1,23 +1,31 @@
 import axios from "axios";
 
-// Instancia de axios con la baseURL de MockAPI
 const axiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_BASE_URL,
+  baseURL: import.meta.env.VITE_BASE_URL, // http://localhost:4000/api/
 });
 
-// Obtener todos los productos
+// GET /api/products
 export const getProducts = async () => {
-  const resp = await axiosInstance.get("/products");
+  const resp = await axiosInstance.get("products");
   return resp.data.products;
 };
 
-// Crear producto nuevo
+// POST /api/products  (form-data)
 export const postProduct = async (body) => {
-  const resp = await axiosInstance.post("/products", body);
-  return resp.data.products;
+  const formData = new FormData();
+  Object.entries(body).forEach(([key, value]) => formData.append(key, value));
+
+  const resp = await axiosInstance.post("products", formData);
+  return resp.data.product;
 };
 
-// Obtener producto por ID
+// POST /api/contacts
+export const postContact = async (body) => {
+  const resp = await axiosInstance.post("contacts", body);
+  return resp.data;
+};
+
+// GET /api/products/:id
 export const getProductById = async (id) => {
   const resp = await axiosInstance.get(`products/${id}`);
   return resp.data;

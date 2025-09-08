@@ -108,6 +108,8 @@ function Form({ inputsArray, values, errors, onChange, onBlur, onSubmit, submitt
                   id={name}
                   name={name}
                   type="file"
+                  accept="image/png,image/jpeg,image/webp"
+                  required={!!required}
                   onChange={onChange}
                   onBlur={onBlur}
                   className={`form__input${errorClass}`}
@@ -156,6 +158,7 @@ function Form({ inputsArray, values, errors, onChange, onBlur, onSubmit, submitt
               </select>
             ) : (
               <input
+                key={submitted ? "sent" : "editing"} //limpia
                 id={name}
                 name={name}
                 type={type}

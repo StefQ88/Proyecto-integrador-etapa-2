@@ -91,8 +91,13 @@ const uploadValidations = {
   category: { validation: (v) => v !== "", errorText: "Elegí una categoría" },
   shortDescription: { validation: (v) => v.trim().length >= 10, errorText: "Mínimo 10 caracteres" },
   image: {
-    validation: (v) => v.trim() !== "" && v.startsWith("http"),
-    errorText: "Pegá una URL de imagen válida",
+    validation: (v) => {
+      if (!(v instanceof File)) return "La imagen es obligatoria.";
+      if (!["image/png", "image/jpeg", "image/webp"].includes(v.type)) return "Formato no válido (png/jpg/webp).";
+      if (v.size > 3 * 1024 * 1024) return "Máximo 3 MB.";
+      return true;
+    },
+    errorText: "Imagen inválida.",
   },
 
   ageFrom: { validation: (v) => v !== "", errorText: "Edad mínima requerida" },
@@ -112,7 +117,7 @@ function Upload() {
       shortDescription: "",
       largeDescription: "",
       freeDelivery: false,
-      image: "",
+      image: null,
       ageFrom: "",
       ageUnitFrom: "",
       ageTo: "",
