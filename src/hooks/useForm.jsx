@@ -12,7 +12,7 @@ const useForm = (initialValues, validations) => {
     if (type === "checkbox") newValue = checked;
     if (type === "file") newValue = files[0] || null;
 
-    // objeto actualizado con el valor nuevo
+    // input actualizado segun el tipo, file carga un archivo
     const updatedValues = {
       ...values,
       [name]: newValue,
