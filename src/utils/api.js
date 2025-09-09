@@ -10,7 +10,7 @@ const axiosInstance = axios.create({
 // Obtener todos los productos
 export const getProducts = async () => {
   const resp = await axiosInstance.get("products"); //  .../api/products
-  return resp.data.products;
+  return resp.data.products.map((p) => ({ ...p, id: p._id }));
 };
 
 // Crear producto nuevo (multipart/form-data)
@@ -30,10 +30,24 @@ export const getProductById = async (id) => {
   return resp.data;
 };
 
+export const saveCart = async (cartItems) => {
+  const payload = {
+    cart: cartItems.map((it) => ({
+      productId: it._id || it.id, // usa el id
+      name: it.name,
+      price: Number(it.price),
+      image: it.image,
+      quantity: it.qty || 1,
+    })),
+  };
+  const resp = await axiosInstance.post("cart", payload);
+  return resp.data;
+};
+
 // Contacto
-// export const postContact = async (body) => {
-//   const resp = await axiosInstance.post("contact", body);
-//   return resp.data;
-// };
+export const postContact = async (body) => {
+  const resp = await axiosInstance.post("contact", body);
+  return resp.data;
+};
 
 export default axiosInstance;

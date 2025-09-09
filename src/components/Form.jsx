@@ -6,7 +6,7 @@ import Button from "./Button";
 
 function Form({ inputsArray, values, errors, onChange, onBlur, onSubmit, submitted, children }) {
   return (
-    <Box as="form" className="form" onSubmit={onSubmit}>
+    <form className="form" onSubmit={onSubmit}>
       {inputsArray.map((input) => {
         const { name, label, type, options, required, fields } = input;
         const errorClass = errors[name] ? " with-error" : "";
@@ -194,7 +194,7 @@ function Form({ inputsArray, values, errors, onChange, onBlur, onSubmit, submitt
           Formulario enviado correctamente
         </Text>
       )}
-    </Box>
+    </form>
   );
 }
 

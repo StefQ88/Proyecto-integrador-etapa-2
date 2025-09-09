@@ -4,6 +4,7 @@ import Form from "../components/Form";
 import Container from "../components/Container";
 import useForm from "../hooks/useForm";
 import { useState } from "react";
+import { postContact } from "../utils/api";
 
 const contactInputs = [
   { name: "name", label: "Nombre", type: "text", required: true },
@@ -63,17 +64,32 @@ function ContactUs() {
   );
 
   const [showSuccess, setShowSuccess] = useState(false);
+  const [sendError, setSendError] = useState("");
 
   const handleSubmit = (e) =>
-    onSubmit(e, (vals) => {
+    onSubmit(e, async (vals) => {
+      console.log("SUBMIT DISPARADO:", vals);
+      try {
+        setSendError("");
+
+        const resp = await postContact(vals);
+        if (resp?.ok) {
+          setShowSuccess(true);
+          setTimeout(() => {
+            setShowSuccess(false);
+            resetForm();
+          }, 2000);
+        } else {
+          setSendError(resp?.msg || "No se pudo enviar el mensaje.");
+        }
+      } catch (error) {
+        setSendError("Error de red o servidor.");
+        console.error(error);
+      }
+
       const prevMsgs = JSON.parse(localStorage.getItem("contactMessages") || "[]");
       prevMsgs.push(vals);
       localStorage.setItem("contactMessages", JSON.stringify(prevMsgs));
-      setShowSuccess(true);
-      setTimeout(() => {
-        setShowSuccess(false);
-        resetForm();
-      }, 2000);
     });
 
   return (
@@ -97,7 +113,12 @@ function ContactUs() {
 
             {showSuccess && (
               <Text as="p" className="form__success">
-                Se guardó el mensaje localmente
+                Mensaje enviado correctamente
+              </Text>
+            )}
+            {!!sendError && (
+              <Text as="p" className="form__error">
+                {sendError}
               </Text>
             )}
           </Box>
